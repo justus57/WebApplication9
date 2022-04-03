@@ -21,11 +21,11 @@ namespace WebApplication9.Controllers
     public class TestController : Controller
     {
         static string path = GetDLLPath() + "\\config.xml";
-        static string certPath = "SafaricomMaster.p12";
+        static string certPath = AppDomain.CurrentDomain.BaseDirectory+"SafaricomMaster.p12";
         static X509Certificate2 cert = new X509Certificate2(System.IO.File.ReadAllBytes(certPath), "1234567890");
         public static string umbrellaResponse { get; private set; }
         // GET: Test
-        [System.Web.Http.Route("apisafumbrella")]
+
         public string Test([FromBody] Payload payload)
         {
             var Amount = payload.Amount;
