@@ -20,7 +20,7 @@ namespace WebApplication9.Controllers
     
     public class TestController : Controller
     {
-        static string path = GetDLLPath() + "\\config.xml";
+        static string path = folder() + "\\config.xml";
         static string certPath = AppDomain.CurrentDomain.BaseDirectory+"SafaricomMaster.p12";
         static X509Certificate2 cert = new X509Certificate2(System.IO.File.ReadAllBytes(certPath), "1234567890");
         public static string umbrellaResponse { get; private set; }
@@ -143,6 +143,11 @@ namespace WebApplication9.Controllers
         {
             string assemblyFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             return assemblyFolder;
+        }
+        private static string folder()
+        {
+            string file = AppDomain.CurrentDomain.BaseDirectory;
+            return file;
         }
     }
     public class Payload
